@@ -31,13 +31,13 @@
     </div>
     <div class="row">
         <div class="col-md-6">
+            <h2>⬇️Diesen QR-Code scannen⬇️</h2>
             <div id="xignin"></div>
         </div>
         <div class="col-md-6">
+            <h2 style="display: none" id="wegwegweg">😭Deine Daten sind weg, weg, weg!😭</h2>
             <pre>
-                <code id="json">
-
-                </code>
+                <code id="json"></code>
             </pre>
         </div>
     </div>
@@ -74,6 +74,8 @@
             return response.json();
         }).then(function (json) {
             document.getElementById("json").textContent = JSON.stringify(parseJwt(json["id_token"]), undefined, 2);
+            document.getElementById("wegwegweg").style.display = "block";
+
 
         })
             .catch(function (error) {
@@ -95,8 +97,11 @@
     new XignQRLogin.XignQRLogin(config).start()
 </script>
 <style type="text/css">
-    h1 {
+    h1, h2 {
         font-family: Comic Sans MS, Verdana, Helvetica;
+    }
+    h2 {
+        text-align: center;
     }
 </style>
 </body>
