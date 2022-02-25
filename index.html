@@ -10,17 +10,27 @@
 <script type="application/javascript">
     //thats not how oauth work - please never implement it like this; just demo
     function oauthDone(code) {
-    console.log(code);
-    fetch('https://xignsys.gelsenkirchen.de/openid/token', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: 'grant_type=authorization_code&code='+code+'&redirect_uri=https://gelsenkirchen.polizei-streife.de/&client_id=c8c5c598-4c16-4954-b206-2323f221d172&client_secret=QmWrp/2t1kpPFoL1cyMuuUoUeAbD5A8Nj7hqTVF8iBc='
-    });
+        console.log(code);
+        fetch('https://xignsys.gelsenkirchen.de/openid/token', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'grant_type=authorization_code&code=' + code + '&redirect_uri=https://gelsenkirchen.polizei-streife.de/&client_id=c8c5c598-4c16-4954-b206-2323f221d172&client_secret=QmWrp/2t1kpPFoL1cyMuuUoUeAbD5A8Nj7hqTVF8iBc='
+        });
     }
-     const n={placeholder:{appName:"B\xfcrgerID"},managerUri:"https://xignsys.gelsenkirchen.de",containerId:"xignin",clientId:"c8c5c598-4c16-4954-b206-2323f221d172",mode:XignQRLogin.XignLoginMode.PULL_TOKEN,redirectUri:"https://gelsenkirchen.polizei-streife.de/",useSSO:!1,onAuthentication:oauthDone};
-    new XignQRLogin.XignQRLogin(n).start()
+
+    const config = {
+        placeholder: {appName: "B\xfcrgerID"},
+        managerUri: "https://xignsys.gelsenkirchen.de",
+        containerId: "xignin",
+        clientId: "c8c5c598-4c16-4954-b206-2323f221d172",
+        mode: XignQRLogin.XignLoginMode.PULL_TOKEN,
+        redirectUri: "https://gelsenkirchen.polizei-streife.de/",
+        useSSO: !1,
+        onAuthentication: oauthDone
+    };
+    new XignQRLogin.XignQRLogin(config).start()
 </script>
 </body>
 </html>
