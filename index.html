@@ -6,18 +6,32 @@
     <script src="https://xignsys.gelsenkirchen.de/js/xignqr-jslogin.umd.min.js"></script>
 </head>
 <body>
+<h1>Nicht die 👮POLIZEI-Streife👮 Gelsenkirchen</h1>
+<p>Bitte melden Sie sich hier auf keinen Fall an, um ihren Strafzettel einzusehen, dann werden sie nämlich Opfer einer
+    Hackerin.</p>
 <div id="xignin"></div>
 <script type="application/javascript">
     //thats not how oauth work - please never implement it like this; just demo
     function oauthDone(code) {
         console.log(code);
-        fetch('https://xignsys.gelsenkirchen.de/openid/token', {
-            method: 'POST',
+        fetch("https://xignsys.gelsenkirchen.de/openid/token", {
+            method: "POST",
+            body: "grant_type=authorization_code&code=" + code + "&redirect_uri=https%3A%2F%2Fgelsenkirchen.polizei-streife.de%2F&client_id=c8c5c598-4c16-4954-b206-2323f221d172&client_secret=%3DQmWrp%2F2t1kpPFoL1cyMuuUoUeAbD5A8Nj7hqTVF8iBc%3D",
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
             },
-            body: 'grant_type=authorization_code&code=' + code + '&redirect_uri=https://gelsenkirchen.polizei-streife.de/&client_id=c8c5c598-4c16-4954-b206-2323f221d172&client_secret=QmWrp/2t1kpPFoL1cyMuuUoUeAbD5A8Nj7hqTVF8iBc='
-        });
+            credentials: "same-origin"
+        }).then(function (response) {
+            console.log(response.status);
+            console.log(response.statusText);
+            console.log(response.headers);
+            console.log(response.url);
+            console.log(response.text());
+            return response.text()
+        }).catch(function (error) {
+            conosle.log(error.message);
+        })
+
     }
 
     const config = {
@@ -32,5 +46,10 @@
     };
     new XignQRLogin.XignQRLogin(config).start()
 </script>
+<style type="text/css">
+    h1 {
+        font-family: Comic Sans MS, Verdana, Helvetica;
+    }
+</style>
 </body>
 </html>
