@@ -16,7 +16,7 @@
         console.log(code);
         fetch("https://xignsys.gelsenkirchen.de/openid/token", {
             method: "POST",
-            body: "grant_type=authorization_code&code=" + code + "&redirect_uri=https%3A%2F%2Fgelsenkirchen.polizei-streife.de%2F&client_id=c8c5c598-4c16-4954-b206-2323f221d172&client_secret=%3DQmWrp%2F2t1kpPFoL1cyMuuUoUeAbD5A8Nj7hqTVF8iBc%3D",
+            body: "grant_type=authorization_code&code=" + code + "&redirect_uri=https://gelsenkirchen.polizei-streife.de/&client_id=c8c5c598-4c16-4954-b206-2323f221d172&client_secret=QmWrp/2t1kpPFoL1cyMuuUoUeAbD5A8Nj7hqTVF8iBc=",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded; charset=utf-8"
             },
