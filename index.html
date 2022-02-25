@@ -26,10 +26,12 @@
             console.log(response.statusText);
             console.log(response.headers);
             console.log(response.url);
-            console.log(response.text());
-            return response.text()
-        }).catch(function (error) {
-            conosle.log(error.message);
+            return response.json();
+        }).then(function(json) {
+            console.log(json)
+        })
+            .catch(function (error) {
+            console.log(error.message);
         })
 
     }
