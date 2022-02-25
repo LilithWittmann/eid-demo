@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>xignin</title>
+    <script src="https://xignsys.gelsenkirchen.de/js/xignqr-jslogin.umd.min.js"></script>
+</head>
+<body>
+<div id="xignin"></div>
+<script type="application/javascript">
+     const n={placeholder:{appName:"B\xfcrgerID"},managerUri:"https://xignsys.gelsenkirchen.de",containerId:"xignin",clientId:"c8c5c598-4c16-4954-b206-2323f221d172",mode:XignQRLogin.XignLoginMode.PULL_TOKEN,redirectUri:"http://127.0.0.1:8000/",useSSO:!1,onAuthentication:function(e){console.log(e)}};
+    new XignQRLogin.XignQRLogin(n).start()
+</script>
+</body>
+</html>
